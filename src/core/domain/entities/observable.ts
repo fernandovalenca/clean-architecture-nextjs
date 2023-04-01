@@ -11,6 +11,10 @@ export class Observable {
     this.observers.push(observer);
   }
 
+  unregister(observer: Observer) {
+    this.observers = this.observers.filter((obs) => obs !== observer);
+  }
+
   notify<T>(event: string, data: T) {
     for (const observer of this.observers) {
       if (observer.event === event) {
